@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="datasource" 
+		  class="org.apache.commons.dbcp2.BasicDataSource"
+		  destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+		<property name="url" 
+				  value="jdbc:oracle:thin:@kosa-final-project-db.c7t4k4virzgv.us-east-2.rds.amazonaws.com:1522:ORCL"/>
+		<property name="username" value="admin"/>
+		<property name="password" value="kosa12345"/>
+		<property name="initialSize" value="2"/>
+		<property name="maxTotal" value="2"/>
+		<property name="maxIdle" value="2"/>
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="datasource"/>
+		<property name="configLocation" value="classpath:mybatis/mapper-config.xml"/>
+		<property name="mapperLocations" value="classpath:mybatis/mapper/*.xml"/>
+	</bean>
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>
+</beans>
