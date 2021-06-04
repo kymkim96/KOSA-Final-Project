@@ -8,6 +8,5 @@
 	
 	<typeAliases>
 		<typeAlias alias="employee" type="com.finalproject.dto.EmployeeDto"/>
-		<typeAlias alias="page" type="com.finalproject.dto.PageDto"/>
 	</typeAliases>
 </configuration>
