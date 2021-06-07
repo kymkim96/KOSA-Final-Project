@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.finalproject.dto.PageDto;
 import com.finalproject.service.PageService;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "application/json")
 @Controller
 public class PageController {
 
