@@ -13,5 +13,6 @@ public class PageDto {
 	private String title;
 	private String param1;
 	private String param2;
+	private String prepro;
 	
 }

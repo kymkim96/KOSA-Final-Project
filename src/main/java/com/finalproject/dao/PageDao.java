@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.finalproject.dto.CategoryDto;
 import com.finalproject.dto.PageDto;
 import com.finalproject.handler.TestInnerResultHandler;
 
@@ -21,7 +22,9 @@ public class PageDao {
 		
 		List<PageDto> pages = new ArrayList<>();
 		
-		sqlSessionTemplate.select("pages.selectByCategory", category, new TestInnerResultHandler(pages));
+		CategoryDto categoryDto = new CategoryDto();
+		categoryDto.setCategory(category);
+		sqlSessionTemplate.select("pages.selectByCategory", categoryDto, new TestInnerResultHandler(pages));
 		return pages;
 	}
 }
